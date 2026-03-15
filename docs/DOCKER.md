@@ -2,8 +2,8 @@
 
 This repository publishes two images to GitHub Container Registry by default:
 
-- `ghcr.io/<owner>/incident-lab-simulator`
-- `ghcr.io/<owner>/incident-lab-sink`
+- `ghcr.io/agentic2026/incident-lab-simulator`
+- `ghcr.io/agentic2026/incident-lab-sink`
 
 Both images are built from the same codebase.
 

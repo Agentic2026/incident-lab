@@ -17,8 +17,8 @@ This repository is independent of Manifold. You can run it standalone, or attach
 
 This repo publishes two Docker images from the same Python project:
 
-- `ghcr.io/<owner>/incident-lab-simulator`
-- `ghcr.io/<owner>/incident-lab-sink`
+- `ghcr.io/agentic2026/incident-lab-simulator`
+- `ghcr.io/agentic2026/incident-lab-sink`
 
 The simulator image runs configurable profiles. The sink image is a safe internal HTTP target that serves small payloads so you can generate repeatable network activity without touching third-party infrastructure.
 
