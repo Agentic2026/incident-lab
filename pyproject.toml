@@ -1,0 +1,22 @@
+[project]
+name = "incident-lab"
+version = "0.1.0"
+description = "Safe containerized incident simulation lab for security monitoring demos"
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [{ name = "OpenAI" }]
+license = { text = "MIT" }
+dependencies = []
+
+[project.scripts]
+incident-lab = "incident_lab.main:main"
+
+[build-system]
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+package = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/incident_lab"]

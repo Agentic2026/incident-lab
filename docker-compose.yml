@@ -1,0 +1,67 @@
+services:
+  incident-sink:
+    build:
+      context: .
+      dockerfile: docker/sink.Dockerfile
+    image: incident-lab-sink:dev
+    ports:
+      - "18080:8080"
+
+  cpu-periodic:
+    build:
+      context: .
+      dockerfile: docker/simulator.Dockerfile
+    image: incident-lab-simulator:dev
+    environment:
+      INCIDENT_PROFILE: cpu_periodic
+      INCIDENT_NAME: cpu-periodic
+
+  memory-random:
+    build:
+      context: .
+      dockerfile: docker/simulator.Dockerfile
+    image: incident-lab-simulator:dev
+    environment:
+      INCIDENT_PROFILE: memory_random
+      INCIDENT_NAME: memory-random
+
+  beacon-periodic:
+    build:
+      context: .
+      dockerfile: docker/simulator.Dockerfile
+    image: incident-lab-simulator:dev
+    environment:
+      INCIDENT_PROFILE: beacon_periodic
+      INCIDENT_NAME: beacon-periodic
+      TARGET_URL: http://incident-sink:8080/blob?size_kb=4
+
+  exfil-burst:
+    build:
+      context: .
+      dockerfile: docker/simulator.Dockerfile
+    image: incident-lab-simulator:dev
+    environment:
+      INCIDENT_PROFILE: exfil_burst
+      INCIDENT_NAME: exfil-burst
+      TARGET_URL: http://incident-sink:8080/blob?size_kb=64
+      BURST_CONCURRENCY: "16"
+      BURST_REQUESTS: "16"
+
+  io-staging:
+    build:
+      context: .
+      dockerfile: docker/simulator.Dockerfile
+    image: incident-lab-simulator:dev
+    environment:
+      INCIDENT_PROFILE: io_staging
+      INCIDENT_NAME: io-staging
+
+  mixed-intrusion:
+    build:
+      context: .
+      dockerfile: docker/simulator.Dockerfile
+    image: incident-lab-simulator:dev
+    environment:
+      INCIDENT_PROFILE: mixed_intrusion
+      INCIDENT_NAME: mixed-intrusion
+      TARGET_URL: http://incident-sink:8080/blob?size_kb=32
